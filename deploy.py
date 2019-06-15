@@ -14,7 +14,8 @@ config = {
     'dfs.datanode.data.dir': root_ + '/bigdata/hadoop/hadoop_datanode',
     'dfs.replication': 1,
     'yarn.resourcemanager.webapp.address.port': 19405,
-    'SPARK_MASTER_WEBUI_PORT': 19406
+    'SPARK_MASTER_WEBUI_PORT': 19406,
+    'dfs.http.address': 19407
 }
 
 try:
@@ -133,6 +134,11 @@ def config_hadoop():
                                                                     <property>
                                                                         <name>dfs.replication</name>
                                                                         <value>%(dfs.replication)s</value>
+                                                                    </property>
+                                                                    
+                                                                    <property>
+                                                                        <name>dfs.http.address</name>
+                                                                        <value>0.0.0.0:%(dfs.http.address.port)s</value>
                                                                     </property>
 
                                                                 </configuration>''' % config, text)
